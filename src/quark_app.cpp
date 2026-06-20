@@ -9,6 +9,12 @@ void QuarkApp::OnContextInitialized() {
     CefRefPtr<QuarkClient> client(new QuarkClient());
 
     CefWindowInfo window_info;
+
+    #if defined(OS_WIN)
+        window_info.SetAsPopup(nullptr, "Quark");
+    #endif
+
+	window_info.runtime_style = CEF_RUNTIME_STYLE_ALLOY;
     
     CefBrowserSettings browser_settings;
     std::string url = "https://www.google.com";
